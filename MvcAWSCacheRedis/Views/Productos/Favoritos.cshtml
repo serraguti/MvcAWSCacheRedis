@@ -1,0 +1,62 @@
+﻿@model IEnumerable<MvcAWSCacheRedis.Models.Producto>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="color:blue">
+    Productos Favoritos AWS
+</h1>
+
+@if (Model == null)
+{
+    <h1 style="color:red">
+        No existen productos en Cache
+    </h1>
+}
+else
+{
+<table class="table table-warning">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Precio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Imagen)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    <img src="@item.Imagen"
+                         style="width: 150px; height: 150px" />
+                </td>
+                <td>
+                    <a asp-controller="Productos"
+                       asp-action="EliminarFavorito" 
+                       asp-route-id="@item.IdProducto"
+                       class="btn btn-danger">
+                        Eliminar de Cache
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+
+

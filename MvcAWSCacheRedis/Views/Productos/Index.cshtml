@@ -6,6 +6,10 @@
 
 <h1>Productos AWS Cache Redis</h1>
 
+<h2 style="color:blue">
+    @TempData["MENSAJE"]
+</h2>
+
 <table class="table">
     <thead>
         <tr>
@@ -39,6 +43,12 @@
                    asp-action="Details" asp-route-id="@item.IdProducto"
                    class="btn btn-info">
                     Details
+                </a>
+                <a asp-controller="Productos"
+                   asp-action="SeleccionarFavorito"
+                   asp-route-id="@item.IdProducto"
+                   class="btn btn-outline-success">
+                    Favorito
                 </a>
             </td>
         </tr>
